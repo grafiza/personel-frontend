@@ -1,8 +1,13 @@
 import React from 'react'
+import MainPage from './components/main-page'
 
 const HomePage = () => {
   return (
-    <div>Home Page</div>
+    <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+      <MainPage/>
+
+      
+      </div>
   )
 }
 
