@@ -9,23 +9,31 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import { createEmployee } from '@/app/business/employee';
 import { toast } from 'react-toastify';
 const AddEmployeeForm = () => {
+    const router = useRouter();
+        
 
-        const router = useRouter();
+   
 
-        const handleActionForm = async (data) => {
-            const result = await createEmployee(data);
-            console.log("result :------------"+result.data.firstName);
-            if (result?.status) {
-                router.push('/pages/employee')
-                toast.success(result.message);
-                console.log("------------ KAYDEDİLDİ -----------------")
-            } else {
-                console.log(result.data);
-                toast.error("Hata");
-            }
-        };
+    const handleActionForm = async (formData) => {
+      try {
+        const result = await createEmployee(formData);
+        console.log("result :------------" + result);
+        if (result?.status) {
+          router.push('/pages/employee'); 
+          toast.success(result.message);
+          console.log("------------ KAYDEDİLDİ -----------------");
+        } else {
+          console.log(result.data);
+          toast.error("Hata");
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+        toast.error("Bir hata meydana geldi.");
+      }
+    };
         return (
-            <form action={handleActionForm} >
+            <form action={handleActionForm}>
+            
                 <div className="border-b border-gray-900/10 pb-12">
                     <h2 className="text-base font-semibold leading-7 text-gray-900">Personel Bilgileri</h2>
                     <p className="mt-1 text-sm leading-6 text-gray-600">Lütfen bilgileri eksiksiz doldurunuz</p>
@@ -46,10 +54,9 @@ const AddEmployeeForm = () => {
                             <option value="SEF">Şef</option>
                         </Select>
                     </div>
-                    <Button className="text-moon !w-[200px] ml-auto mt-10">
-          Create 
-        </Button>
+                    
                 </div>
+                <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10">Create </Button>
             </form>
         )
     }

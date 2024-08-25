@@ -1,16 +1,15 @@
-import Header from '@/app/components/header'
-import React from 'react'
-import AddEmployeeForm from './form'
+import Header from "@/app/components/header";
+import React from "react";
+import AddEmployeeForm from "./form";
 
 const AddEmploye = () => {
-    return (
-        <div>
-          <Header props={"Yeni Personel Ekle"} />
-          <AddEmployeeForm/>
-          
+  console.log("AddEmploye Rendered");
+  return (
+    <div>
+      <Header headerTitle="Personel Ekle" />
+      <AddEmployeeForm />
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default AddEmploye
+export default AddEmploye;

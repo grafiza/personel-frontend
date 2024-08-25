@@ -3,7 +3,7 @@ import { responseMessage } from "../lib/utils/response-message";
 import { revalidatePath } from "next/cache";
 export const createEmployee = async (formData) => {
   try {
-    const router = useRouter();
+    
     const data = {
       firstName: formData.get("firstName"),
       lastName: formData.get("lastName"),
@@ -30,7 +30,7 @@ export const createEmployee = async (formData) => {
       throw new Error(JSON.stringify(result));
     }
 
-    router.push("/pages/employee");
+    revalidatePath("/pages/employee");
     return responseMessage(true, "Yeni Personel Başarıyla Eklendi", result);
   } catch (error) {
     return responseMessage(false, "Personel Ekleme Başarısız!", error.message);
