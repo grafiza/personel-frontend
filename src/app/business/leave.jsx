@@ -41,7 +41,7 @@ const Leave = async () => {
                                 </th>
 
                                 <th scope="col" className="px-6 py-3">
-                                    Kullandığı izinler
+                                    İzin Hakkı
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Kalan İzin Hakkı

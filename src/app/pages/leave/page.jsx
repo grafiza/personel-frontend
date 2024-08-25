@@ -1,10 +1,10 @@
 import React from 'react'
-import Leave from '../../business/leave'
+import LeaveList from './list'
 
 const Page = () => {
   return (
     <div className='mt-7'>
-        <Leave/>
+        <LeaveList/>
     </div>
   )
 }

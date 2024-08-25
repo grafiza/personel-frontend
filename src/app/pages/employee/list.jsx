@@ -1,20 +1,12 @@
+"use client"
+import Header from '@/app/components/header'
+import Link from 'next/link'
+import React from 'react'
+const EmployeeList = ({employee}) => {
 
-import React from 'react';
-import Header from '../components/header';
-import Link from 'next/link';
-
-const Personel = async () => {
-    const res = await fetch('http://localhost:8080/employee', { cache: 'no-store' });
-    const data = await res.json();
-
-    const content = data.content;
-
-    if (!Array.isArray(content)) {
-        console.error('Content is not an array', content);
-        return <div>Error: Content is not in expected format.</div>;
-    }
-    return (
-        <>
+  return (
+    <>
+    
         <Header props={"PERSONELLER"}/>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -54,7 +46,7 @@ const Personel = async () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {content.map((personel => (
+                            {employee?.map((personel => (
 
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={personel.id}>
                                     <td className="w-4 p-4">
@@ -89,9 +81,7 @@ const Personel = async () => {
                                     </td>
                                 </tr>
                             )))}
-                            <div>
-
-                            </div>
+                            
 
                         </tbody>
                     </table>
@@ -101,7 +91,7 @@ const Personel = async () => {
 
             </div>
         </>
-    );
-};
+  )
+}
 
-export default Personel;
+export default EmployeeList
