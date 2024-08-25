@@ -5,7 +5,7 @@ const AddButton = ({ title, adres }) => {
     console.log("bakalım href ne : "+adres)
     return (
     
-        <Link href="/pages/employee/add" className="hover:text-orange-400 hover:shadow-none bg-white w-auto h-auto p-3 rounded-md shadow-md">
+        <Link href="/employee/add" className="hover:text-orange-400 hover:shadow-none bg-white w-auto h-auto p-3 rounded-md shadow-md">
             
                 {title}
           

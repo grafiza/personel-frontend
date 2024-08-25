@@ -5,9 +5,8 @@ import Text from '@/app/components/form-elements/text';
 import React from 'react'
 import { useRouter } from "next/navigation";
 import Button from '@/app/components/form-elements/button';
-import { FaArrowRightLong } from 'react-icons/fa6';
 import { createEmployee } from '@/app/business/employee';
-import { toast } from 'react-toastify';
+
 const AddEmployeeForm = () => {
     const router = useRouter();
         
@@ -15,21 +14,15 @@ const AddEmployeeForm = () => {
    
 
     const handleActionForm = async (formData) => {
-      try {
-        const result = await createEmployee(formData);
-        console.log("result :------------" + result);
+      const result = await createEmployee(formData);
+        console.log("result :------------" + result.status);
         if (result?.status) {
-          router.push('/pages/employee'); 
-          toast.success(result.message);
+          router.push('/employee'); 
           console.log("------------ KAYDEDİLDİ -----------------");
         } else {
           console.log(result.data);
-          toast.error("Hata");
         }
-      } catch (error) {
-        console.error("An error occurred:", error);
-        toast.error("Bir hata meydana geldi.");
-      }
+      
     };
         return (
             <form action={handleActionForm}>

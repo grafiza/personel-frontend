@@ -1,7 +1,8 @@
-
+"use client"
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navigation = [
   { name: 'Personeller', href:"employee", current: true },
@@ -13,6 +14,8 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+  const pathName=usePathname();
+  console.log("path name burada"+pathName);
   return (
     <Disclosure as="nav" className="bg-gray-800 rounded shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -32,6 +35,7 @@ export default function NavBar() {
               <div className="flex space-x-4">
                 {navigation.map((item) => (
                   <Link href={`/pages/${item.href}`} key={item.name} className={classNames(
+                    
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium'
                   )}>

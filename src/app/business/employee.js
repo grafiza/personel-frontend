@@ -1,3 +1,4 @@
+"use server"
 import { responseMessage } from "../lib/utils/response-message";
 import { revalidatePath } from "next/cache";
 export const createEmployee = async (formData) => {
@@ -12,9 +13,9 @@ export const createEmployee = async (formData) => {
       startDate: formData.get("startDate"),
       status: "CALISIYOR"
     };
-    console.log(data.firstName)
-    console.log("yol neymiş: -----------------" + process.env.BASE_URL)
-    const res = await fetch("//localhost:8080/employee",
+    
+    
+    const res = await fetch("http://localhost:8080/employee",
       {
         method: "POST",
         body: JSON.stringify(data),
@@ -29,8 +30,8 @@ export const createEmployee = async (formData) => {
       throw new Error(JSON.stringify(result));
     }
 
-    revalidatePath("/pages/employee");
-    return responseMessage(true, "Yeni Personel Başarıyla Eklendi", result);
+    revalidatePath("/employee");
+    return responseMessage(true, "Yeni Personel Başarıyla Eklendi", "");
   } catch (error) {
     return responseMessage(false, "Personel Ekleme Başarısız!", error.message);
   }
