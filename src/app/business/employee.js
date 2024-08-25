@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { responseMessage } from "../lib/utils/response-message";
 import { revalidatePath } from "next/cache";
 export const createEmployee = async (formData) => {
