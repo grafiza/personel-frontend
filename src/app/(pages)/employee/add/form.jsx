@@ -1,21 +1,17 @@
 "use client"
-import Date from '@/app/components/form-elements/date';
-import Select from '@/app/components/form-elements/select';
-import Text from '@/app/components/form-elements/text';
+import Date from '@/components/form-elements/date';
+import Select from '@/components/form-elements/select';
+import Text from '@/components/form-elements/text';
 import React from 'react'
 import { useRouter } from "next/navigation";
-import Button from '@/app/components/form-elements/button';
-import { createEmployee } from '@/app/business/employee';
+import Button from '@/components/form-elements/button';
+import { createEmployee } from '@/business/employee';
+import Textarea from '@/components/form-elements/textarea';
 
 const AddEmployeeForm = () => {
     const router = useRouter();
-        
-
-   
-
     const handleActionForm = async (formData) => {
       const result = await createEmployee(formData);
-        console.log("result :------------" + result.status);
         if (result?.status) {
           router.push('/employee'); 
           console.log("------------ KAYDEDİLDİ -----------------");
@@ -46,10 +42,11 @@ const AddEmployeeForm = () => {
                             <option value="MUHASEBE">Muhasebe</option>
                             <option value="SEF">Şef</option>
                         </Select>
+                        <Textarea placeholder="Açıklama" name="description"/>
                     </div>
                     
                 </div>
-                <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10">Create </Button>
+                <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10">Kaydet </Button>
             </form>
         )
     }

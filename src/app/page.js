@@ -1,5 +1,6 @@
   "use client"
   import React from 'react'
+import { Toaster } from 'sonner'
 
   const page = ({ children }) => {
     return (
@@ -8,7 +9,7 @@
        
         
         {children}
-    
+        <Toaster position="bottom-right" richColors />
       </div>
     )
   }
