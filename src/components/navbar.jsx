@@ -17,6 +17,7 @@ export default function NavBar() {
   const pathName = usePathname();
 
   return (
+    <nav className="navbar">
     <Disclosure as="nav" className="bg-gray-800 rounded shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -39,7 +40,7 @@ export default function NavBar() {
                       href={item.href}
                       key={item.name}
                       className={classNames(
-                        isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        isActive ? 'bg-orange-400 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                         'rounded-md px-3 py-2 text-sm font-medium'
                       )}
                     >
@@ -64,7 +65,7 @@ export default function NavBar() {
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={classNames(
-                  isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  isActive ? 'bg-orange-400 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium',
                 )}
               >
@@ -75,5 +76,6 @@ export default function NavBar() {
         </div>
       </DisclosurePanel>
     </Disclosure>
+    </nav>
   )
 }

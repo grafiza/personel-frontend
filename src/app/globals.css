@@ -3,3 +3,14 @@
 @tailwind utilities;
 
 
+@media print {
+    /* Navbar'ı gizle */
+    .navbar {
+      display: none;
+    }
+  
+    /* Yazdır ve Kapat butonlarını gizle */
+    .no-print {
+      display: none;
+    }
+  }

@@ -40,21 +40,14 @@ export const createLeave = async (formData) => {
 
 // update Leave
 export const updateLeave = async (id, formData) => {
-console.log("burası UPDATE LEAVE JS")
-console.log("elave id : "+id)
-  console.log("id:" + id, +"Form Data : " + formData)
 
 
-  console.log(formData.get("employeeId"))
-  for (let [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`);
-}
   try {
     const data = {
       leaveStartDate: formData.get("leaveStartDate"),
       leaveEndDate: formData.get("leaveEndDate"),
       employee: {  
-        id: formData.get("employeeId")
+        id: parseInt(formData.get("employeeId"))
       },
       leaveType: formData.get("leaveType"),
       description:formData.get("description")
@@ -108,7 +101,7 @@ export const getLeaveById = async (id) => {
 
 
 // Get All Leaves
-export const getLeaves = async (page = 0, size = 10) => {
+export const getLeaves = async (page = 0, size = 50) => {
   try {
     const res = await fetch(`http://localhost:8080/leave?page=${page}&size=${size}`,{
       cache: 'no-store'
@@ -129,3 +122,36 @@ export const getLeaves = async (page = 0, size = 10) => {
 
 
 };
+
+export const deleteLeave = async (id) => {
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/leave/${id}`, {
+      method: "DELETE",
+      cache: "no-store"
+    });
+
+    if (!res.ok) {
+      throw new Error('Silme işlemi başarısız!');
+    }
+console.log(res)
+    // Eğer yanıt gövdesi varsa JSON parse edin
+    let result;
+    try {
+      result = await res.json();
+      console.log(result.body)
+    } catch (error) {
+      // Yanıt gövdesi yoksa boş bir nesne döndürün
+      result = {};
+    }
+
+    revalidatePath("/leave");
+    return responseMessage(true, "İzin Silindi.", result);
+  } catch (error) {
+    return responseMessage(
+      false,
+      "İzin Silme Başarısız!",
+      error.message
+    );
+  }
+};
+

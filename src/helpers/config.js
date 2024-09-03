@@ -1,11 +1,11 @@
-export const config={
+export const config = {
 
-    project:{
-        name:"Personel Takip Programı",
-        description:"----"
+    project: {
+        name: "Personel Takip Programı",
+        description: "----"
     },
-    api:{
-        baseUrl:"http://localhost:3000"
+    api: {
+        baseUrl: "http://localhost:3000"
     }
 }
 
@@ -19,22 +19,30 @@ export const formatDate = (dateString) => {
 
 export const duty = (getDuty) => {
     const dutyMapping = {
-        BEKCI: 'Bekçi',
-        SEF: 'Şef',
-        KASIYER: 'Kasiyer',
-        MUHASEBE:"Muhasebe Personeli",
-        SATIS:"Satış Sorumlusu"
+        BEKCI: "Bekçi",
+        KASIYER: "Kasiyer",
+        SATIS: "Satış Sorumlusu",
+        MUHASEBE: "Muhasebe Personeli",
+        SEF: "Şef",
+        DEPO: "Depo Personeli",
+        TEMIZLIK: "Temizlik Personeli",
+        ASCI: "Aşçı",
+        SATINALMA: "Satınalma Personeli",
+        MUDUR:"Müdür"
+
         // Diğer görevler buraya eklenebilir
     };
 
     return dutyMapping[getDuty] || getDuty; // Eşleşme yoksa orijinal değeri döndür
 };
 
-export const leaveTypes=(getLeaveType)=>{
-    const leaveTypeMapping={
-        YILLIK:"Yıllık İzin",
-        UCRETSIZ:"Ücretsiz İzin",
-        SAGLIK:"Sağlık İzni"
+export const leaveTypes = (getLeaveType) => {
+    const leaveTypeMapping = {
+        YILLIK: "Yıllık İzin",
+        UCRETSIZ: "Ücretsiz İzin",
+        SAGLIK: "Sağlık İzni",
+        MAZERET:"Mazeret İzni",
+        ZORUNLU_HALLER:"Zorunlu Haller"
     };
     return leaveTypeMapping[getLeaveType] || getLeaveType;
 }

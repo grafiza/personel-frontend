@@ -1,0 +1,18 @@
+{
+    "options": [
+      { "value": "BEKCI", "label": "Bekçi" },
+      { "value": "KASIYER", "label": "Kasiyer" },
+      { "value": "SATIS", "label": "Satış Sorumlusu" },
+      { "value": "MUHASEBE", "label": "Muhasebe Personeli" },
+      { "value": "SEF", "label": "Şef" },
+      { "value": "DEPO", "label": "Depo Personeli" },
+      { "value": "TEMIZLIK", "label": "Temizlik Personeli" },
+      { "value": "ASCI", "label": "Aşçı" },
+      { "value": "SATINALMA", "label": "Satınalma Sorumlusu" },
+      { "value": "MUDUR", "label": "Müdür" }
+
+    
+    ]
+  }
+
+

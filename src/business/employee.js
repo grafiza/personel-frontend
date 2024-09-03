@@ -49,6 +49,7 @@ export const updateEmployee = async (id, formData) => {
       phone: formData.get("phone"),
       duty: formData.get("duty"),
       startDate:formData.get("startDate"),
+      endDate:formData.get("endDate"),
       status: formData.get("status"),
       description:formData.get("description")
     };
@@ -97,7 +98,7 @@ export const getIdEmployee = async (id) => {
   }
 };
 
-export const getEmployee = async (page = 0, size = 10) => {
+export const getEmployee = async (page = 0, size = 50) => {
   try {
     const res = await fetch(`http://localhost:8080/employee?page=${page}&size=${size}`, {
       cache: 'no-store'

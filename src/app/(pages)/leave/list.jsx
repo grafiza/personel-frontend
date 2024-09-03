@@ -5,6 +5,8 @@ import { FaPen } from 'react-icons/fa6'
 import SearchBox from '@/components/search-box'
 import Button from '@/components/form-elements/button'
 import { formatDate, leaveTypes } from '@/helpers/config'
+import * as XLSX from 'xlsx';
+import DeleteLeave from './delete'
 
 const LeaveList = ({ leaves }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,19 +27,37 @@ const LeaveList = ({ leaves }) => {
         setStatus(newStatus);
     };
 
+    const handleExcel = () => {
+        // Excel'e aktarılacak veri
+        const worksheetData = filteredLeaves.map(leave => ({
+            'Ad Soyad': `${leave.employee.firstName} ${leave.employee.lastName}`,
+            'İzin Türü': leaveTypes(leave.leaveType),
+            'İzin Başlama T.': formatDate(leave.leaveStartDate),
+            'İzin Bitiş T.': formatDate(leave.leaveEndDate),
+            'Kullanılan İzin': leave.leaveDays,
+            'Kalan İzin Hakkı': leave.employee.remainingLeaveDays,
+            'Açıklama': leave.description
+        }));
+
+        // Yeni bir çalışma kitabı oluştur
+        const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Leaves');
+
+        // Excel dosyasını indir
+        XLSX.writeFile(workbook, 'leaves.xlsx');
+    };
+
     return (
         <>
             {/* Arama ve Status Butonları */}
             <div className="flex justify-between items-center gap-2 mb-2">
                 <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <div className='flex gap-3'>
-                <Button onClick={() => handleStatusChange('CALISIYOR')} >Çalışanlar</Button>
-
-                <Button onClick={() => handleStatusChange('AYRILDI')}>Ayrılanlar </Button>
-
+                    <Button onClick={() => handleStatusChange('CALISIYOR')} >Çalışanlar</Button>
+                    <Button onClick={() => handleStatusChange('AYRILDI')}>Ayrılanlar </Button>
+                    <Button className="!w-36 !bg-green-600 " onClick={() => handleExcel()}>Excele Aktar</Button>
                 </div>
-                
-                
             </div>
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -76,15 +96,15 @@ const LeaveList = ({ leaves }) => {
                                 Açıklama
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Action
+                                Edit
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredLeaves.map(personel => (
+                        {filteredLeaves.map(leave => (
                             <tr
                                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-orange-400"
-                                key={personel.id}
+                                key={leave.id}
                             >
                                 <td className="w-4 p-4">
                                     <div className="flex items-center">
@@ -97,30 +117,32 @@ const LeaveList = ({ leaves }) => {
                                     </div>
                                 </td>
                                 <td scope="row" className="px-6 py-4 font-bold whitespace-nowrap">
-                                    {personel.employee.firstName} {personel.employee.lastName}
+                                    {leave.employee.firstName} {leave.employee.lastName}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {leaveTypes(personel.leaveType)}
+                                    {leaveTypes(leave.leaveType)}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {formatDate(personel.leaveStartDate)}
+                                    {formatDate(leave.leaveStartDate)}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {formatDate(personel.leaveEndDate)}
+                                    {formatDate(leave.leaveEndDate)}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {personel.leaveDays}
+                                    {leave.leaveDays}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {personel.employee.remainingLeaveDays}
+                                    {leave.employee.remainingLeaveDays}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {personel.description}
+                                    {leave.description}
                                 </td>
                                 <td className="flex items-center px-6 py-4">
-                                    <Link href={`/leave/edit/${personel.id}`} className="font-medium text-orange-400 dark:text-blue-500 hover:underline">
+                                    <Link href={`/leave/edit/${leave.id}`} >
                                         <FaPen />
                                     </Link>
+                                    &nbsp;&nbsp;
+                                    <DeleteLeave id={leave.id}  />
                                 </td>
                             </tr>
                         ))}

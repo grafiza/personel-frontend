@@ -8,7 +8,7 @@ const SearchBox = ({ searchTerm, setSearchTerm }) => {
         placeholder="Arama: Ad Soyad"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded text-sm"
       />
     </div>
   )

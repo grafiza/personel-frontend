@@ -6,9 +6,9 @@ import Select from '@/components/form-elements/select';
 import Textarea from '@/components/form-elements/textarea';
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { toast } from "sonner";
 
-const AddLeaveForm = ({ employee }) => {
-
+const AddLeaveForm = ({ employee, leaveOptions,dutyOptions }) => {
 
   const router = useRouter();
   const handleActionForm = async (formData) => {
@@ -17,9 +17,11 @@ const AddLeaveForm = ({ employee }) => {
       
     if (result?.status) {
       router.push('/leave');
-      console.log("------------ KAYDEDİLDİ -----------------");
+      
+      toast.success("Kayıt Başarılı")
     } else {
       console.log(result.data+" hataya düştü");
+      toast.error(result.error)
     }
   }
   return (
@@ -31,17 +33,19 @@ const AddLeaveForm = ({ employee }) => {
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <Select name="employeeId" placeholder="Personel Seçiniz" required>
 
-            {employee?.map((emp, index) => (
+          {employee?.map((emp, index) => (
               <option key={index} value={emp.id}>
                 {emp.firstName} {emp.lastName}
               </option>
             ))}
           </Select>
           <Select required name="leaveType" placeholder="İzin Türü">
-            <option value="" disabled>Seçiniz</option>
-            <option value="YILLIK">Yıllık İzin</option>
-            <option value="UCRETSIZ">Ücretsiz İzin</option>
-            <option value="SAGLIK">Sağlık İzni</option>
+          {leaveOptions.options?.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+            
           </Select>
           <Date placeholder="İzin Başlama Tarihi" className="mb-1" name="leaveStartDate" type="date" required />
           <Date placeholder="İzin Bitiş Tarihi" className="mb-1" name="leaveEndDate" type="date" required />

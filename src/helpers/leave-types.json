@@ -1,0 +1,12 @@
+{
+    "options": [
+      { "value": "YILLIK", "label": "Yıllık İzin" },
+      { "value": "UCRETSIZ", "label": "Ücretsiz İzin" },
+      { "value": "SAGLIK", "label": "Sağlık İzni" },
+      { "value": "MAZERET", "label": "Mazeret İzni" },
+      { "value": "ZORUNLU_HALLER", "label": "Zorunlu Haller" }
+    ]
+  }
+
+
+  

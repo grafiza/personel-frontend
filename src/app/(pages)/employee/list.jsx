@@ -5,7 +5,7 @@ import { duty, formatDate } from '@/helpers/config';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaPen } from 'react-icons/fa6'
-
+import * as XLSX from 'xlsx';
 const EmployeeList = ({ employee }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [status, setStatus] = useState('CALISIYOR'); // Varsayılan olarak CALISIYOR
@@ -24,7 +24,27 @@ const EmployeeList = ({ employee }) => {
     const handleStatusChange = (newStatus) => {
         setStatus(newStatus);
     };
-
+    const handleExcel = () => {
+        // Excel'e aktarılacak veri
+        const worksheetData = filteredEmployees.map(emp => ({
+            'Ad Soyad': `${emp.firstName} ${emp.lastName}`,
+            'Tc Kimlik No': emp.ssnNumber,
+            'Telefon': emp.phone,
+            'Görev': duty(emp.duty),
+            'İşe Başlama T.': formatDate(emp.startDate),
+            'İzin Hakkı': emp.leaveDays,
+            'Kalan İzin Hakkı': emp.remainingLeaveDays,
+            'Açıklama': emp.description
+        }));
+    
+        // Yeni bir çalışma kitabı oluştur
+        const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Employees');
+    
+        // Excel dosyasını indir
+        XLSX.writeFile(workbook, 'employees.xlsx');
+    };
     return (
         <>
             {/* Arama ve Status Butonları */}
@@ -34,6 +54,7 @@ const EmployeeList = ({ employee }) => {
                 <Button onClick={() => handleStatusChange('CALISIYOR')} >Çalışanlar</Button>
 
                 <Button onClick={() => handleStatusChange('AYRILDI')}>Ayrılanlar </Button>
+                <Button className="!w-36 !bg-green-600" onClick={()=>handleExcel()}>Excele Aktar</Button>
 
                 </div>
                 
@@ -79,7 +100,7 @@ const EmployeeList = ({ employee }) => {
                                 Açıklama
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Action
+                                Edit
                             </th>
                         </tr>
                     </thead>
@@ -124,7 +145,7 @@ const EmployeeList = ({ employee }) => {
                                     {personel.description}
                                 </td>
                                 <td className="flex items-center px-6 py-4">
-                                    <Link href={`/employee/edit/${personel.id}`} className="font-medium text-orange-400 dark:text-blue-500 hover:underline">
+                                    <Link href={`/employee/edit/${personel.id}`} className="font-medium text-gray-700 dark:text-blue-500 hover:underline">
                                         <FaPen />
                                     </Link>
                                 </td>
