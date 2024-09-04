@@ -4,7 +4,8 @@ import LeaveList from './list';
 import { getLeaves } from '@/business/leave';
 import Header from '@/components/header';
 import PageableButton from '@/components/pageable-button';
-
+import Button from '@/components/form-elements/button';
+import * as XLSX from 'xlsx';
 const Page = () => {
   const [leaves, setLeaves] = useState([]);
   const [page, setPage] = useState(0); // Başlangıç sayfası
@@ -24,7 +25,12 @@ const Page = () => {
 
     fetchLeaves();
   }, [page, pageSize]);
-
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(leaves);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Leaves');
+    XLSX.writeFile(wb, 'leaves.xlsx');
+  };
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
@@ -40,6 +46,10 @@ const Page = () => {
 />
       
       <LeaveList leaves={leaves} />
+      <div className='flex mt-2 float-end w-full'>
+      {/* <Button onClick={exportToExcel}>Export to Excel</Button>*/} 
+
+      </div>
       <div className="pagination">
         {Array.from({ length: totalPages }).map((_, index) => (
           <PageableButton 

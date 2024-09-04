@@ -123,6 +123,56 @@ export const getLeaves = async (page = 0, size = 50) => {
 
 };
 
+export const getLeavesByEmployee = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:8080/leave/employee/${id}`, {
+      cache: 'no-store'
+    });
+
+    if (!res.ok) {
+      const errorMessage = await res.json();
+      throw new Error(errorMessage.message || "API request failed");
+    }
+
+    const result = await res.json(); // Bu, bir dizi olmalı
+    return result; // Doğrudan diziyi döndürün
+
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+
+
+
+
+
+
+
+// Get All Leaves 
+export const getAllLeaves = async () => {
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/leave/getAllLeaves`,{
+      cache: 'no-store'
+    });
+
+    // Yanıtın başarılı olup olmadığını önce kontrol edin
+    if (!res.ok) {
+      throw new Error('API request failed');
+    }
+
+    const result = await res.json();
+    return result;
+
+  } catch (error) {
+    throw new Error(error.message);
+  }
+
+
+
+};
+
+
 export const deleteLeave = async (id) => {
   try {
     const res = await fetch(`${process.env.BASE_URL}/leave/${id}`, {
