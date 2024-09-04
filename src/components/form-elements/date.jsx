@@ -4,7 +4,7 @@ const Date = (props) => {
 
     <>
     <div className="sm:col-span-2">
-      <label className="block text-sm font-medium leading-6 text-gray-900" text="dasd">{attr.placeholder}</label>
+      <label className="block text-sm font-medium leading-6 text-red-400" text="dasd">{attr.placeholder}</label>
       <div className="mt-2">
         <input 
         type={type? type:'datetime-local'}

@@ -39,6 +39,9 @@ const AddLeaveForm = ({ employee, leaveOptions,dutyOptions }) => {
               </option>
             ))}
           </Select>
+          
+          <Date placeholder="İzin Başlama Tarihi" className="mb-1" name="leaveStartDate" type="date" required />
+          <Date placeholder="İzin Bitiş Tarihi" className="mb-1" name="leaveEndDate" type="date" required />
           <Select required name="leaveType" placeholder="İzin Türü">
           {leaveOptions.options?.map((option) => (
               <option key={option.value} value={option.value}>
@@ -47,9 +50,6 @@ const AddLeaveForm = ({ employee, leaveOptions,dutyOptions }) => {
             ))}
             
           </Select>
-          <Date placeholder="İzin Başlama Tarihi" className="mb-1" name="leaveStartDate" type="date" required />
-          <Date placeholder="İzin Bitiş Tarihi" className="mb-1" name="leaveEndDate" type="date" required />
-
           <Textarea placeholder="Açıklama" name="description" />
         </div>
 
