@@ -133,14 +133,10 @@ export const deleteLeave = async (id) => {
     if (!res.ok) {
       throw new Error('Silme işlemi başarısız!');
     }
-console.log(res)
-    // Eğer yanıt gövdesi varsa JSON parse edin
     let result;
     try {
       result = await res.json();
-      console.log(result.body)
     } catch (error) {
-      // Yanıt gövdesi yoksa boş bir nesne döndürün
       result = {};
     }
 

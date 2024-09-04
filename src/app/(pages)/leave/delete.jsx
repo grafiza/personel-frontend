@@ -6,8 +6,8 @@ import { toast } from 'sonner';
 const DeleteLeave = ({ id }) => {
   const handleActionForm = async (id) => {
       try {
-          console.log('Silme işlemi için ID:', id);  // Debugging: Hangi ID'nin kullanıldığını kontrol edin
-          const result = await deleteLeave(id);  // ID'yi direkt olarak gönderin, parseInt'e gerek olmayabilir
+          console.log('Silme işlemi için ID:', id);  
+          const result = await deleteLeave(id);  
           if (result?.status) {
               toast.success(result.message);
           } else {

@@ -40,7 +40,7 @@ export default function NavBar() {
                       href={item.href}
                       key={item.name}
                       className={classNames(
-                        isActive ? 'bg-orange-400 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        isActive ? 'bg-blue-rgb-2 text-white' : 'text-gray-300 hover:bg-blue-rgb hover:text-white',
                         'rounded-md px-3 py-2 text-sm font-medium'
                       )}
                     >

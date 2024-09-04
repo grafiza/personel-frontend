@@ -3,7 +3,7 @@ import AddButton from './add-button'
 
 const Header = ({ headerTitle, buttons }) => {
     return (
-        <div className='bg-orange-400 mb-2  rounded shadow-md flex justify-between items-center mt-2'>
+        <div className='bg-blue-rgb-2 mb-2  rounded shadow-md flex justify-between items-center mt-2'>
             <div>
                 <h4 className='p-3 text-lg font-semibold text-white'>
                 {headerTitle}
