@@ -5,9 +5,9 @@ const Footer = () => {
     const today=new Date();
     const year = today.getFullYear();
   return (
-    <div className='text-center p-3 bg-blue-rgb-2 text-gray-400 rounded-md mt-4'>
+    <div className='text-center p-3 bg-gray-800 text-white rounded-md mt-4'>
 
-        <p>Dinler Yapı Market | {year}</p>
+        <p>Dinler Yapı Market &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; {year}</p>
     </div>
   )
 }
