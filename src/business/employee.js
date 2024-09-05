@@ -117,7 +117,7 @@ export const getEmployee = async (page = 0, size = 50) => {
 };
 export const getEmployeeWithoutPageable = async () => {
   try {
-    const res = await fetch("http://localhost:8080/employee", {
+    const res = await fetch("http://localhost:8080/employee/active", {
       cache: 'no-store'
     });
 

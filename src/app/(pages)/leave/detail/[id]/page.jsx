@@ -2,13 +2,14 @@
 import React from 'react'
 import EmployeLeaveList from './list';
 import { getLeavesByEmployee } from '@/business/leave';
+import Header from '@/components/header';
 
 const Page = async({params}) => {
     const leaveListByEmployee=await getLeavesByEmployee(params.id);
 
-    console.log(leaveListByEmployee+"page sayfasında geliyor");
   return (
     <div>
+      <Header headerTitle="Bütün İzinler"/>
         <EmployeLeaveList leaves={leaveListByEmployee}/>
 
     </div>
