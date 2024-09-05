@@ -6,6 +6,7 @@ import Select from '@/components/form-elements/select';
 import Textarea from '@/components/form-elements/textarea';
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { FaFloppyDisk } from 'react-icons/fa6';
 import { toast } from "sonner";
 
 const AddLeaveForm = ({ employee, leaveOptions,dutyOptions }) => {
@@ -55,7 +56,7 @@ const AddLeaveForm = ({ employee, leaveOptions,dutyOptions }) => {
         <div className='p-10 text-center text-red-600 font-semibold'>Eğer izin yarım gün girilecekse, açıklama kutusuna "YARIM GÜN" veya "yarım gün" yazınız. Başka bir şey yazmayınız!</div>
 
       </div>
-      <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10">İzin Kaydet </Button>
+      <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10"><FaFloppyDisk/> İzin Kaydet </Button>
 
     </form>
   )

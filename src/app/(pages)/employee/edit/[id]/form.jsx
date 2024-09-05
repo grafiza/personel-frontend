@@ -8,6 +8,7 @@ import Textarea from '@/components/form-elements/textarea';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
 import { useRouter } from "next/navigation";
+import { FaFloppyDisk } from 'react-icons/fa6';
 
 const EditEmployeeForm = ({ getEmployee, dutyOptions }) => {
     const employee = parseInt(getEmployee.id)
@@ -75,7 +76,7 @@ const EditEmployeeForm = ({ getEmployee, dutyOptions }) => {
                 </div>
 
             </div>
-            <Button className="text-moon !w-[200px] ml-auto mt-10">Güncelle </Button>
+            <Button className="text-moon !w-[200px] ml-auto mt-10"><FaFloppyDisk/> Güncelle </Button>
         </form>
     )
 }

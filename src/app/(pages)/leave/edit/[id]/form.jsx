@@ -7,6 +7,7 @@ import Select from '@/components/form-elements/select';
 import Textarea from '@/components/form-elements/textarea';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { FaFloppyDisk, FaPencil, FaPrint } from 'react-icons/fa6';
 
 const EditLeaveForm = ({ getLeave, employeeList, leaveOptions }) => {
   const leaveId = parseInt(getLeave.id);
@@ -60,10 +61,10 @@ const EditLeaveForm = ({ getLeave, employeeList, leaveOptions }) => {
           <div className='p-10 text-center text-red-600 font-semibold'>Eğer izin yarım gün girilecekse, açıklama kutusuna "YARIM GÜN" veya "yarım gün" yazınız. Başka bir şey yazmayınız!</div>
         </div>
 
-        <Button className="!w-[200px] ml-auto mt-10">İzin Güncelle</Button>
+        <Button className="!w-[200px] ml-auto mt-10"><FaFloppyDisk/> İzin Güncelle</Button>
 
       </form>
-      <Button type="button" onClick={handlePrint} className="!w-[200px] ml-auto mt-10">İzin Yazdır</Button>
+      <Button type="button" onClick={handlePrint} className="!w-[200px] ml-auto mt-4 bg-red-500 text-white py-2 rounded"><FaPrint/> İzin Yazdır</Button>
 
     </>
   );

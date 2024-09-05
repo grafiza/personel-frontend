@@ -8,6 +8,7 @@ import Button from '@/components/form-elements/button';
 import { createEmployee } from '@/business/employee';
 import Textarea from '@/components/form-elements/textarea';
 import { toast } from "sonner";
+import { FaFloppyDisk } from 'react-icons/fa6';
 
 const AddEmployeeForm = ({ dutyOptions }) => {
     const router = useRouter();
@@ -50,7 +51,7 @@ const AddEmployeeForm = ({ dutyOptions }) => {
                 </div>
 
             </div>
-            <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10">Kaydet </Button>
+            <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10"><FaFloppyDisk/> Kaydet </Button>
         </form>
     )
 }
