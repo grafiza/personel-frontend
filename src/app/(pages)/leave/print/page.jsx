@@ -1,6 +1,6 @@
 "use client"
 import Modal from '@/components/modal';
-import PrintForm from '@/components/print-form';
+import PrintForm from '@/app/(pages)/leave/print/print-form';
 import React, { useEffect, useState } from 'react';
 
 
@@ -36,9 +36,7 @@ const PrintLeavePage = () => {
   return (
     <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
       <PrintForm getLeave={leaveData} />
-      <button onClick={() => window.print()} className="no-print mt-4 bg-blue-500 text-white py-2 px-4 rounded">
-        Yazdır
-      </button>
+      
     </Modal>
   );
 };

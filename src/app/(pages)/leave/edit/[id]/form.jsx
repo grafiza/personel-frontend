@@ -8,7 +8,7 @@ import Textarea from '@/components/form-elements/textarea';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
-const EditLeaveForm = ({ getLeave, employeeList,leaveOptions }) => {
+const EditLeaveForm = ({ getLeave, employeeList, leaveOptions }) => {
   const leaveId = parseInt(getLeave.id);
   const router = useRouter();
 
@@ -27,7 +27,7 @@ const EditLeaveForm = ({ getLeave, employeeList,leaveOptions }) => {
     sessionStorage.setItem('leaveData', JSON.stringify(getLeave));
     router.push('/leave/print');
   };
-  
+
 
   return (
     <>
@@ -44,24 +44,27 @@ const EditLeaveForm = ({ getLeave, employeeList,leaveOptions }) => {
                 </option>
               ))}
             </Select>
-            <Select required name="leaveType" placeholder="İzin Türü" defaultValue={getLeave.leaveType}>
-            {leaveOptions.options?.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-            </Select>
+
             <Date placeholder="İzin Başlama Tarihi" className="mb-1" name="leaveStartDate" type="date" required defaultValue={getLeave.leaveStartDate} />
             <Date placeholder="İzin Bitiş Tarihi" className="mb-1" name="leaveEndDate" type="date" required defaultValue={getLeave.leaveEndDate} />
+            <Select required name="leaveType" placeholder="İzin Türü" defaultValue={getLeave.leaveType}>
+              {leaveOptions.options?.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
+            
             <Textarea placeholder="Açıklama" name="description" defaultValue={getLeave.description} />
           </div>
+          <div className='p-10 text-center text-red-600 font-semibold'>Eğer izin yarım gün girilecekse, açıklama kutusuna "YARIM GÜN" veya "yarım gün" yazınız. Başka bir şey yazmayınız!</div>
         </div>
 
         <Button className="!w-[200px] ml-auto mt-10">İzin Güncelle</Button>
 
       </form>
       <Button type="button" onClick={handlePrint} className="!w-[200px] ml-auto mt-10">İzin Yazdır</Button>
-      
+
     </>
   );
 };

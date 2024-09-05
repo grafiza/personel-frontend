@@ -32,12 +32,12 @@ const EmployeePage = () => {
   return (
     <div>
       <Header
-  headerTitle="Personel Listesi"
-  buttons={[
-    { title: "Personel Ekle", adres: "/employee/add" },
-    { title: "İzin Ekle", adres: "/leave/add" }
-  ]}
-/>
+        headerTitle="Personel Listesi"
+        buttons={[
+          { title: "Personel Ekle", adres: "/employee/add" },
+          { title: "İzin Ekle", adres: "/leave/add" }
+        ]}
+      />
       <EmployeeList employee={employees} />
       <div className="pagination">
         {Array.from({ length: totalPages }).map((_, index) => (

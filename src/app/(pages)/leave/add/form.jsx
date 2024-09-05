@@ -52,6 +52,7 @@ const AddLeaveForm = ({ employee, leaveOptions,dutyOptions }) => {
           </Select>
           <Textarea placeholder="Açıklama" name="description" />
         </div>
+        <div className='p-10 text-center text-red-600 font-semibold'>Eğer izin yarım gün girilecekse, açıklama kutusuna "YARIM GÜN" veya "yarım gün" yazınız. Başka bir şey yazmayınız!</div>
 
       </div>
       <Button type="submit" className="text-moon !w-[200px] ml-auto mt-10">İzin Kaydet </Button>
