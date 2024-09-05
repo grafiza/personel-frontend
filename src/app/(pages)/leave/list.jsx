@@ -56,7 +56,7 @@ const LeaveList = ({ leaves }) => {
                 <div className='flex gap-3'>
                     <Button onClick={() => handleStatusChange('CALISIYOR')} >Çalışanlar</Button>
                     <Button onClick={() => handleStatusChange('AYRILDI')}>Ayrılanlar </Button>
-                    <Button className="!w-36 !bg-green-600 " onClick={() => handleExcel()}>Excele Aktar</Button>
+                    <Button className="!w-36 !bg-green-600 hover:!bg-green-800" onClick={() => handleExcel()}>Excele Aktar</Button>
                 </div>
             </div>
 
@@ -64,29 +64,27 @@ const LeaveList = ({ leaves }) => {
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            
-                            <th scope="col" className="px-6 py-3">Ad Soyad</th>
-                            <th scope="col" className="px-6 py-3">İzin Türü</th>
-                            <th scope="col" className="px-6 py-3">İzin Başlama T.</th>
-                            <th scope="col" className="px-6 py-3">İzin Bitiş T.</th>
-                            <th scope="col" className="px-6 py-3">Kullanılan İzin</th>
-                            <th scope="col" className="px-6 py-3">Kalan İzin Hakkı</th>
-                            <th scope="col" className="px-6 py-3">Açıklama</th>
-                            <th scope="col" className="px-6 py-3">Edit</th>
+                            <th scope="col" className="px-6 py-2">Ad Soyad</th>
+                            <th scope="col" className="px-6 py-2">İzin Türü</th>
+                            <th scope="col" className="px-6 py-2">İzin Başlama T.</th>
+                            <th scope="col" className="px-6 py-2">İzin Bitiş T.</th>
+                            <th scope="col" className="px-6 py-2">Kullanılan İzin</th>
+                            <th scope="col" className="px-6 py-2">Kalan İzin Hakkı</th>
+                            <th scope="col" className="px-6 py-2">Açıklama</th>
+                            <th scope="col" className="px-6 py-2">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredLeaves.map(leave => (
-                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb-2"
-                                key={leave.id}>
-                                <td scope="row" className="px-6 py-4 font-bold whitespace-nowrap"><Link href={`/leave/detail/${leave.employee.id}`}> {leave.employee.firstName} {leave.employee.lastName}</Link>                                </td>
-                                <td className="px-6 py-4">{leaveTypes(leave.leaveType)}</td>
-                                <td className="px-6 py-4">{formatDate(leave.leaveStartDate)}</td>
-                                <td className="px-6 py-4">{formatDate(leave.leaveEndDate)}</td>
-                                <td className="px-6 py-4">{leave.leaveDays}</td>
-                                <td className="px-6 py-4">{leave.employee.remainingLeaveDays}</td>
-                                <td className="px-6 py-4">{leave.description}</td>
-                                <td className="flex items-center px-6 py-4"><Link href={`/leave/edit/${leave.id}`} ><FaPen /></Link>&nbsp;&nbsp;<DeleteLeave id={leave.id}  /></td>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb-2" key={leave.id}>
+                                <td scope="row" className="px-6 font-medium whitespace-nowrap text-red-600"><Link href={`/leave/detail/${leave.employee.id}`}> {leave.employee.firstName} {leave.employee.lastName}</Link>                                </td>
+                                <td className="px-6 py-2">{leaveTypes(leave.leaveType)}</td>
+                                <td className="px-6 py-2">{formatDate(leave.leaveStartDate)}</td>
+                                <td className="px-6 py-2">{formatDate(leave.leaveEndDate)}</td>
+                                <td className="px-6 py-2">{leave.leaveDays}</td>
+                                <td className="px-6 py-2">{leave.employee.remainingLeaveDays}</td>
+                                <td className="px-6 py-2">{leave.description}</td>
+                                <td className="flex items-center px-6 py-1"><Link href={`/leave/edit/${leave.id}`} ><FaPen /></Link>&nbsp;&nbsp;<DeleteLeave id={leave.id}  /></td>
                             </tr>
                         ))}
                     </tbody>

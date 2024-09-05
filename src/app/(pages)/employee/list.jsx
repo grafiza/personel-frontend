@@ -54,7 +54,7 @@ const EmployeeList = ({ employee }) => {
                 <Button onClick={() => handleStatusChange('CALISIYOR')} >Çalışanlar</Button>
 
                 <Button onClick={() => handleStatusChange('AYRILDI')}>Ayrılanlar </Button>
-                <Button className="!w-36 !bg-green-600" onClick={()=>handleExcel()}>Excele Aktar</Button>
+                <Button className="!w-36 !bg-green-600 hover:!bg-green-800" onClick={()=>handleExcel()}>Excele Aktar</Button>
 
                 </div>
                 
@@ -64,73 +64,31 @@ const EmployeeList = ({ employee }) => {
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                           
-                            <th scope="col" className="px-6 py-3">
-                                Ad Soyad
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Tc Kimlik No
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Telefon
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Görev
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                İşe Başlama T.
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                İzin Hakkı
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Kalan İzin Hakkı
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Açıklama
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Edit
-                            </th>
+                        <tr>                           
+                            <th scope="col" className="px-6 py-2">Ad Soyad</th>
+                            <th scope="col" className="px-6 py-2">Tc Kimlik No</th>
+                            <th scope="col" className="px-6 py-2">Telefon</th>
+                            <th scope="col" className="px-6 py-2">Görev</th>
+                            <th scope="col" className="px-6 py-2">İşe Başlama T.</th>
+                            <th scope="col" className="px-6 py-2">İzin Hakkı</th>
+                            <th scope="col" className="px-6 py-2">Kalan İzin Hakkı</th>
+                            <th scope="col" className="px-6 py-2">Açıklama</th>
+                            <th scope="col" className="px-6 py-2">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredEmployees.map(personel => (
-                            <tr
-                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb"
-                                key={personel.id}
-                            >
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb" key={personel.id}>
                                 
-                                <td scope="row" className="px-6 py-4 font-bold whitespace-nowrap">
-                                    {personel.firstName} {personel.lastName}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {personel.ssnNumber}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {personel.phone}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {duty(personel.duty)}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {formatDate(personel.startDate)}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {personel.leaveDays}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {personel.remainingLeaveDays}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {personel.description}
-                                </td>
-                                <td className="flex items-center px-6 py-4">
-                                    <Link href={`/employee/edit/${personel.id}`}>
-                                        <FaPen />
-                                    </Link>
-                                </td>
+                                <td scope="row" className="px-6 font-medium whitespace-nowrap text-red-600">{personel.firstName} {personel.lastName}</td>
+                                <td className="px-6 py-2">{personel.ssnNumber}</td>
+                                <td className="px-6 py-2">{personel.phone}</td>
+                                <td className="px-6 py-2">{duty(personel.duty)}</td>
+                                <td className="px-6 py-2">{formatDate(personel.startDate)}</td>
+                                <td className="px-6 py-2">{personel.leaveDays}</td>
+                                <td className="px-6 py-2">{personel.remainingLeaveDays}</td>
+                                <td className="px-6 py-2">{personel.description}</td>
+                                <td className="flex items-center px-6"><Link href={`/employee/edit/${personel.id}`}><FaPen /></Link></td>
                             </tr>
                         ))}
                     </tbody>
