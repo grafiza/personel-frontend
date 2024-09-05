@@ -1,3 +1,4 @@
+import Button from '@/components/form-elements/button';
 import { formatDate, leaveTypes } from '@/helpers/config'
 import React, { useRef } from 'react';
 import ReactToPrint from 'react-to-print';
@@ -10,7 +11,8 @@ const PrintForm = ({ getLeave }) => {
         <div className="flex flex-col">
             <ReactToPrint
                 trigger={() => {
-                    return <button>Yazdır</button>
+                    return <Button className="w-32 mt-4 bg-red-500 text-white !py-2 px-4 rounded">Yazdır</Button>
+                        
                 }}
                 content={() => componentRef.current} // useRef'i burada kullanın
                 documentTitle='İzin Belgesi'
@@ -19,11 +21,11 @@ const PrintForm = ({ getLeave }) => {
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5" ref={componentRef}> {/* ref'i buraya ekleyin */}
                 <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="overflow-hidden">
-                        <div className='mt-5 p-5 text-center text-2xl'>
+                        <div className='mt-5 p-5 text-center text-3xl'>
                             <p className='p-4'>FİRMA ÜNVANI: DİNLER ÇİVİ BOYA İNŞ. GIDA PAZ.LTD.ŞTİ</p>
                             <p className='p-4'>ADRES : SANCAKLAR MAH. AKÇAKOCA KARAYOLU CAD. NO:111 MERKEZ / DÜZCE</p>
                         </div>
-                        <table className="table-auto text-lg">
+                        <table className="table-auto text-2xl">
                             <thead>
                                 <tr>
                                     <th scope="col" colSpan="2" className="text-4xl font-bold py-10 text-center">
@@ -69,7 +71,7 @@ const PrintForm = ({ getLeave }) => {
                                         Bu izin yukarıda bahsedilen maksat için kullanılmadığı veya izin süresine uyulmadığı taktirde ilgili mevzuata göre cezai işlem uygulanacaktır.
                                     </td>
                                 </tr>
-                                <tr className='border-b h-36 align-text-top text-center'>
+                                <tr className='border-b h-44 align-text-top text-center'>
                                     <td>BÖLÜM SORUMLUSU</td>
                                     <td>KAŞE / İMZA</td>
                                 </tr>
