@@ -63,7 +63,7 @@ const PrintForm = ({ getLeave }) => {
                                     <td className="px-6 py-3">{leaveTypes(getLeave.employee.remainingLeaveDays)}</td>
                                 </tr>
                                 <tr className='border-b h-32'>
-                                    <td className="px-6 py-3">İmza</td>
+                                    <td className="px-6 py-3">Personel İmzası</td>
                                     <td className="px-6 py-3"></td>
                                 </tr>
                                 <tr className='border-b'>

@@ -100,6 +100,7 @@ export const getLeaveById = async (id) => {
 };
 
 
+
 // Get All Leaves
 export const getLeaves = async (page = 0, size = 50) => {
   try {
