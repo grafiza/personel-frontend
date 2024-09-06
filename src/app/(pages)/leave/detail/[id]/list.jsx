@@ -30,7 +30,7 @@ console.log("leaves böyle geliyor : "+leaves)
                     {leaves.map(leave => (
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb"
                             key={leave.id}>
-                            <td scope="row" className="px-6 font-medium whitespace-nowrap text-red-600">{leave.employee.firstName} {leave.employee.lastName}</td>
+                            <td scope="row" className="px-6 font-medium whitespace-nowrap text-black">{leave.employee.firstName} {leave.employee.lastName}</td>
                             <td className="px-6 py-2">{leaveTypes(leave.leaveType)}</td>
                             <td className="px-6 py-2">{formatDate(leave.leaveStartDate)}</td>
                             <td className="px-6 py-2">{formatDate(leave.leaveEndDate)}</td>

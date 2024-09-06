@@ -77,13 +77,13 @@ const LeaveList = ({ leaves }) => {
                     <tbody>
                         {filteredLeaves.map(leave => (
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb-2" key={leave.id}>
-                                <td scope="row" className="px-6 font-medium whitespace-nowrap text-red-600"><Link href={`/leave/detail/${leave.employee.id}`}> {leave.employee.firstName} {leave.employee.lastName}</Link>                                </td>
-                                <td className="px-6 py-2">{leaveTypes(leave.leaveType)}</td>
-                                <td className="px-6 py-2">{formatDate(leave.leaveStartDate)}</td>
-                                <td className="px-6 py-2">{formatDate(leave.leaveEndDate)}</td>
-                                <td className="px-6 py-2">{leave.leaveDays}</td>
-                                <td className="px-6 py-2">{leave.employee.remainingLeaveDays}</td>
-                                <td className="px-6 py-2">{leave.description}</td>
+                                <td scope="row" className="px-6 font-medium whitespace-nowrap text-black"><Link href={`/leave/detail/${leave.employee.id}`}> {leave.employee.firstName} {leave.employee.lastName}</Link>                                </td>
+                                <td className="px-6 py-2 whitespace-nowrap">{leaveTypes(leave.leaveType)}</td>
+                                <td className="px-6 py-2 whitespace-nowrap">{formatDate(leave.leaveStartDate)}</td>
+                                <td className="px-6 py-2 whitespace-nowrap" >{formatDate(leave.leaveEndDate)}</td>
+                                <td className="px-6 py-2 whitespace-nowrap">{leave.leaveDays}</td>
+                                <td className="px-6 py-2 whitespace-nowrap">{leave.employee.remainingLeaveDays}</td>
+                                <td className="px-6 py-2 whitespace-nowrap">{leave.description}</td>
                                 <td className="flex items-center px-6 py-1"><Link href={`/leave/edit/${leave.id}`} ><FaPen /></Link>&nbsp;&nbsp;<DeleteLeave id={leave.id}  /></td>
                             </tr>
                         ))}

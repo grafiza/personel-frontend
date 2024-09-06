@@ -7,7 +7,7 @@ const PageableButton = ( props ) => {
     <button
       type={type ? type : 'button'}
       className={`w-auto h-auto px-4 py-1 mx-1 mt-4 rounded-md shadow-md 
-        ${isActive ? 'bg-gray-800 text-white font-medium' : 'bg-gray-400 text-white hover:shadow-none'}
+        ${isActive ? 'bg-lacivert-1 text-white font-medium' : 'bg-bej-1 text-gray-700 hover:shadow-none'}
         ${className}`}
       {...attr}
     >

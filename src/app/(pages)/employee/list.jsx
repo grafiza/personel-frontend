@@ -80,7 +80,7 @@ const EmployeeList = ({ employee }) => {
                         {filteredEmployees.map(personel => (
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-blue-rgb" key={personel.id}>
                                 
-                                <td scope="row" className="px-6 font-medium whitespace-nowrap text-red-600">{personel.firstName} {personel.lastName}</td>
+                                <td scope="row" className="px-6 font-medium whitespace-nowrap text-black">{personel.firstName} {personel.lastName}</td>
                                 <td className="px-6 py-2">{personel.ssnNumber}</td>
                                 <td className="px-6 py-2">{personel.phone}</td>
                                 <td className="px-6 py-2">{duty(personel.duty)}</td>

@@ -1,5 +1,5 @@
 import { getLeave } from "@/business/main";
-import Holidays from "./(pages)/holidays";
+import Holidays from "../components/holidays/holidays";
 import LeavesEmployee from "@/components/leave-employee/leaves-employee";
 import { getAllLeaves } from "@/business/leave";
 

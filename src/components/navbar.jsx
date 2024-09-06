@@ -19,7 +19,7 @@ export default function NavBar() {
 
   return (
     <nav className="navbar">
-    <Disclosure as="nav" className="bg-gray-800 rounded shadow-md">
+    <Disclosure as="nav" className="bg-lacivert-1 rounded shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -41,7 +41,7 @@ export default function NavBar() {
                       href={item.href}
                       key={item.name}
                       className={classNames(
-                        isActive ? 'bg-blue-rgb-2 text-white' : 'text-gray-300 hover:bg-blue-rgb hover:text-white',
+                        isActive ? 'bg-turuncu-1 text-white' : 'text-gray-300 hover:bg-lacivert-2 hover:text-white',
                         'rounded-md px-3 py-2 text-sm font-medium'
                       )}
                     >
@@ -66,7 +66,7 @@ export default function NavBar() {
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={classNames(
-                  isActive ? 'bg-blue-rgb-2-400 text-white' : 'text-gray-300 hover:bg-blue-rgb hover:text-white',
+                  isActive ? 'bg-turuncu-1 text-white' : 'text-gray-300 hover:bg-lacivert-2 hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium',
                 )}
               >

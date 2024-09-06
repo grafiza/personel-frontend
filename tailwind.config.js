@@ -17,7 +17,12 @@ module.exports = {
         'blue-rgb': 'rgb(83,131,209)',
         'blue-rgb-hover': 'rgba(83,131,209,50)',
         'blue-rgb-2': 'rgb(52,104,147)',
-
+        'lacivert-1':'rgb(41, 95, 152)',
+        'lacivert-2':'rgb(26, 72, 112)',
+        'mavi-1':'rgb(124, 147, 195)',
+        'bej-1':'rgb(225, 215, 183)',
+        'turuncu-1':'rgb(255, 127, 62)',
+        'acik-gri':'rgb(243, 247, 236)'
       },
     },
   },
